@@ -11,6 +11,8 @@ public class EmployeeWage {
 	int empHour;
 	int monthlyWage;
 	int daysPerMonth = 20;
+	int totalHours = 100;
+	int totalDays = 20;
 
 	public void employeeAttdence() {
 		int empCheck = (int) (Math.random() * 10) % 2;
@@ -59,6 +61,38 @@ public class EmployeeWage {
 	public void monthlyWage() {
 		monthlyWage = dailyWage * daysPerMonth;
 		System.out.println("Monthly Wage Of Employee is =" + monthlyWage);
+		System.out.println();
+	}
+
+	public void calculateWagesTillGivenCondition() {
+		int empWage = 0;
+		int totalEmpWage = 0;
+		int totalWorkingDays = 0;
+		int totalEmpHrs = 0;
+		while (totalEmpHrs <= totalHours && totalWorkingDays < totalDays) {
+			totalWorkingDays++;
+			int empCheck = (int) (Math.floor(Math.random() * 10) % 3);
+			// System.out.println("Random Integers: " + empCheck);
+			switch (empCheck) {
+			case 1:
+				empHour = 8;
+				System.out.print("Present");
+				break;
+			case 2:
+				empHour = 4;
+				System.out.print("Part time");
+				break;
+			case 0:
+				empHour = 0;
+				System.out.println("Absent");
+				break;
+			}
+			empWage = empHour * wagePerHours;
+			totalEmpWage = totalEmpWage + empWage;
+			System.out.println("days " + totalWorkingDays + "emphrs " + empHour);
+			System.out.println("wage " + totalEmpWage);
+			System.out.println("total wage " + totalEmpWage);
+		}
 	}
 
 	public static void main(String[] args) {
@@ -69,6 +103,7 @@ public class EmployeeWage {
 		obj.employeePartTimeWage();
 		obj.bySwitchCase();
 		obj.monthlyWage();
+		obj.calculateWagesTillGivenCondition();
 
 	}
 
